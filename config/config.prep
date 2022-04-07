@@ -17,5 +17,6 @@ fi
 # BUFRLIST indicates the list of BUFR data dump file names to process.
 # The list below is the default list in `JGLOBAL_PREP`
 export BUFRLIST="adpupa proflr aircar aircft satwnd adpsfc sfcshp vadwnd wdsatr ascatw rassda gpsipw"
+export BUFRLIST="aircar aircft"
 
 echo "END: config.prep"

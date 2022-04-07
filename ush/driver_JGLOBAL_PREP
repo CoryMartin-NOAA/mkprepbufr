@@ -22,6 +22,9 @@ done
 . $EXPDIR/env/${machine}.env prep
 status=$?
 [[ $status -ne 0 ]] && exit $status
+export launcher_PREP='srun'
+export POE="NO"
+export BACK="NO"
 
 ###############################################################
 # Set script and dependency variables
@@ -43,13 +46,16 @@ rm -f $COMOUT/${OPREFIX}prepbufr.acft_profiles
 rm -f $COMOUT/${OPREFIX}nsstbufr
 
 export job="j${CDUMP}_prep_${cyc}"
+export COMPONENT='atmos'
 export DATAROOT="$RUNDIR/$CDATE/$CDUMP/prepbufr"
 export COMSP=${COMSP:-$DMPDIR/$CDUMP$DUMP_SUFFIX.$PDY/$cyc/$CDUMP.t${cyc}z.}
-export COMIN=${COMIN:-$ROTDIR/$CDUMP.$PDY/$cyc}
-export COMINgdas=${COMINgdas:-$ROTDIR/gdas.$PDY/$cyc}
-export COMINgfs=${COMINgfs:-$ROTDIR/gfs.$PDY/$cyc}
+export COMIN=${COMIN:-$ROTDIR/$CDUMP.$PDY/$cyc/$COMPONENT}
+export COMINgdas=${COMINgdas:-$ROTDIR/gdas.$PDY/$cyc/$COMPONENT}
+export COMINgfs=${COMINgfs:-$ROTDIR/gfs.$PDY/$cyc/$COMPONENT}
+export HOMEobsproc=$HOMEobsproc_network
+export HOMEgfs=$HOMEobsproc
 
-$HOMEobsproc_network/jobs/JGLOBAL_PREP
+$HOMEobsproc_network/jobs/JOBSPROC_GLOBAL_PREP
 status=$?
 [[ $status -ne 0 ]] && exit $status
 

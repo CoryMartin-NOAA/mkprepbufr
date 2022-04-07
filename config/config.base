@@ -7,11 +7,11 @@ EXPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. >/dev/null 2>&1 && pwd )"
 
 ########################################################################
 # BEGIN: Configurable EXPERIMENT specific environment parameters
-export machine="WCOSS_DELL_P3"
+export machine="HERA"
 
 export CDUMP=gdas
-export CDATE=2019050106
-export PSLOT="testwcoss"
+export CDATE=2022040700
+export PSLOT="testhera"
 
 # Temporary spaces for work (machine dependent)
 if [ $machine = "HERA" ]; then
@@ -29,8 +29,10 @@ export PRVT=$EXPDIR/fix/prepobs_errtable.global
 
 # Build paths for Obsproc (Replace with custom builds for development)
 if [ $machine = "HERA" ]; then
-  export HOMEobsproc_prep="/scratch1/NCEPDEV/global/glopara/git/obsproc/obsproc_prep_RB-5.2.0"
-  export HOMEobsproc_network="/scratch1/NCEPDEV/global/glopara/git/obsproc/obsproc_global.v3.2.3"
+  #export HOMEobsproc_prep="/scratch1/NCEPDEV/global/glopara/git/obsproc/obsproc_prep_RB-5.2.0"
+  export HOMEobsproc_prep="/scratch2/NCEPDEV/stmp1/Cory.R.Martin/obsproc/github/obsproc/"
+  #export HOMEobsproc_network="/scratch1/NCEPDEV/global/glopara/git/obsproc/obsproc_global.v3.2.3"
+  export HOMEobsproc_network="/scratch2/NCEPDEV/stmp1/Cory.R.Martin/obsproc/github/obsproc/"
 elif [ $machine = "WCOSS_DELL_P3" ]; then
   export HOMEobsproc_prep="/gpfs/dell2/emc/modeling/noscrub/emc.glopara/git/obsproc/obsproc_prep_RB-5.2.0"
   export HOMEobsproc_network="/gpfs/dell2/emc/modeling/noscrub/emc.glopara/git/obsproc/obsproc_global.v3.2.3"
